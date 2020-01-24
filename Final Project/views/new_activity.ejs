@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Outdoor Activities in Charlotte</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+
+        <% let path="/new_activity" %>
+        <% include top_header.ejs%>
+
+		<main>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+				<% include partials/placeholder.ejs%>
+        <form class="ui form" id="new_activity" method="POST" action="/up_activities">
+					<div class="field">
+        		<label for="activity_topic">Topic</label>
+        		<input type="text" id="activity_topic" name="activity_topic" placeholder="Topic" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.activity_topic%>"<%}%> %>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_topic')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_name">Activity Name</label>
+        		<input type="text" id="activity_name" name="activity_name" placeholder="Name of Activity" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.activity_name%>"<%}%> %>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_name')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_host">Host</label>
+        		<input type="text" id="activity_host" name="activity_host" placeholder="Host" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.activity_host%>"<%}%> %>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_host')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_date">Date</label>
+             <% let today = new Date().toISOString().split('T')[0] %>
+              <input type = "date" id="activity_date" name="activity_date" min="<%= today %>" <% if(req_body){%>value="<%= req_body.activity_date%>"<%}%>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_date')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_time">Time</label>
+        		<input type = "time" id="activity_time" name="activity_time" <% if(req_body){%>value="<%= req_body.activity_time%>"<%}%>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_time')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_loc">Location</label>
+        		<input type="text" id="activity_loc" name="activity_loc" placeholder="Location" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.activity_loc%>"<%}%> %>>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_loc')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<div class="field">
+        		<label for="activity_details">Description</label>
+        		<textarea id="activity_details" name="activity_details" placeholder="Description" required><% if(req_body){%><%= req_body.activity_details%><%}%> %></textarea>
+						<% if(errors){%>
+						<% var display = errors.find(element => element.param === 'activity_details')%>
+						<% if (display){%>
+						<p class="errors"><%= display.msg%></p>
+						<%}%>
+						<%}%>
+					</div>
+					<button class="ui button" type="submit" >Submit</button>
+        </form>
+			</div>
+		</div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+	</div>
+
+</body>
+</html>

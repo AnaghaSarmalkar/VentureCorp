@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Activity</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+        <% let path="/contact" %>
+        <% include top_header.ejs%>
+		<main>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+				<% include partials/placeholder.ejs%>
+				<div>
+					<h1>Contact Us</h1>
+				</div>
+				<div>
+					<p>Dummy Address</p>
+					<p>Lorem Ipsum Sit Amet</p>
+					<p>Dummy Pin</p>
+					<p>Dummy place</p>
+					<p>Telephone : 1-800-123-4567</p>
+					<p>Email : info@dummy.com</p>
+				</div>
+			</div>
+		</div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Activity</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+        <% let path="/activity_detail"%>
+        <% include top_header.ejs%>
+		<main>
+			<% include helperFunctions/groupby.ejs %>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+				<% if (user){%>
+				<div>
+				  <h2>
+				    <% var username=user.first_name +" "+user.last_name%>
+				    <strong>Welcome <%=username%></strong>
+				    <%var userid = user.user_id %>
+				  </h2>
+				  <br>
+				</div>
+				<%}%>
+					<h1>
+						<%= activity.activity_name %>
+					</h1>
+				<div class="photo_detail">
+					<div><img src="/assets/images/default.png" class="profile_picture" alt="Profile Picture"></div>
+					<div>
+						<div>Organizer: <%= activity.activity_host %></div>
+						<div>Date: <%= activity.activity_date %></div>
+						<div>Time: <%= activity.activity_time %></div>
+						<div>Location: <%= activity.activity_loc %></div>
+					</div>
+				</div>
+				<div>
+					Details -
+					<%= activity.activity_details %>
+				</div>
+				<div>
+					<!-- <% var loc=userActivityResponse(activity) %> -->
+					<!-- <p><%= loc%></p> -->
+					<div class="ui header">6 people attending</div>
+					<!-- <% var comp_loc= loc+"&rsvp=Yes"%> -->
+					<div id="rsvp-container">
+						<% if (userid === activity.activity_host_id){%>
+								<div class="five-grid ui column two">
+									<form action="/saved_activities" method="post">
+										<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+										<input class="ui button green" type="submit" name= "rsvp" value="Yes" />
+									</form>
+									<form action="/saved_activities" method="post">
+										<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+										<input class="ui button red" type="submit" name= "rsvp" value="No"  />
+									</form>
+									<form action="/saved_activities" method="post">
+										<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+										<input class="ui button primary" type="submit" name= "rsvp" value="Maybe"  />
+									</form>
+									<form action="/update_activities" method="post">
+										<input type="hidden" name="activity_id" value="<%= activity.activity_id%>">
+										<input class="ui button primary" type="submit" name= "user_action" value="Update"  />
+									</form>
+									<form action="/update_activities" method="post">
+										<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+										<input class="ui button primary" type="submit" name= "user_action" value="Delete"  />
+									</form>
+								<div>
+						<%} else {%>
+							<div class="three-grid ui column two">
+								<form action="/saved_activities" method="post">
+									<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+									<input class="ui button green" type="submit" name= "rsvp" value="Yes" />
+								</form>
+								<form action="/saved_activities" method="post">
+									<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+									<input class="ui button red" type="submit" name= "rsvp" value="No"  />
+								</form>
+								<form action="/saved_activities" method="post">
+									<input type="hidden" name="activity_id" value="<%=activity.activity_id%>">
+									<input class="ui button primary" type="submit" name= "rsvp" value="Maybe"  />
+								</form>
+							<div>
+						<%}%>
+
+						<table>
+							<tr>
+								<td align="left">
+
+								</td>
+								<td align="left">
+									<% if (userid === activity.activity_host_id){%>
+
+										<%}%>
+								</td>
+							</tr>
+						</table>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+			</div>
+		</main>
+		<footer>
+		  <% include partials/footer.ejs%>
+		</footer>
+	</div>
+
+</body>
+</html>

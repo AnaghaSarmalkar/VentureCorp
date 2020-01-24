@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Outdoor Activities in Charlotte</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+
+        <% let path="/register" %>
+        <% include top_header.ejs%>
+
+		<main>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+
+            <form class="ui form" id="new_activity" method="POST" action="/user_registered">
+				<h1 class="ui dividing header">Hello, register here for a new account</h1>
+				<div>
+					<%if(ex_errors){%>
+						<p class="errors"><%= ex_errors%></p>
+					<%}%>
+					<!-- <%if(ex_errors){%>
+						<p class="errors"><%= ex_errors%></p>
+					<%}%> -->
+				</div>
+                <div class="field">
+                    <label>Name</label>
+                    <div class="two fields">
+                        <div class="field">
+                            <input type="text" id="first_name" name="first_name" placeholder="First Name" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.first_name%>"<%}%> %>>
+                            <% if(errors){%>
+                            <% var display = errors.find(element => element.param === 'first_name')%>
+                            <% if (display){%>
+                            <p class="errors"><%= display.msg%></p>
+                            <%}%>
+                            <%}%>
+                        </div>
+                        <div class="field">
+                            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.last_name%>"<%}%> %>>
+                            <% if(errors){%>
+                            <% var display = errors.find(element => element.param === 'last_name')%>
+                            <% if (display){%>
+                            <p class="errors"><%= display.msg%></p>
+                            <%}%>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="two fields">
+                    <div class="field">
+                        <label for="user_id">Email ID</label>
+                        <input type="text" id="user_id" name="user_id" placeholder="Email ID" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.user_id%>"<%}%> %>>
+                        <% if(errors){%>
+                        <% var display = errors.find(element => element.param === 'user_id')%>
+                        <% if (display){%>
+                        <p class="errors"><%= display.msg%></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Password" required pattern="\S.*\S?">
+                        <% if(errors){%>
+                        <% var display = errors.find(element => element.param === 'password')%>
+                        <% if (display){%>
+                        <p class="errors"><%= display.msg%></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Address</label>
+                    <div class="two fields">
+                        <div class="field">
+                            <input type = "text" id="address_1" name="address_1" placeholder="Address 1" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.address_1%>"<%}%> %>>
+                            <% if(errors){%>
+                            <% var display = errors.find(element => element.param === 'address_1')%>
+                            <% if (display){%>
+                            <p class="errors"><%= display.msg%></p>
+                            <%}%>
+                            <%}%>
+                        </div>
+                        <div class="field">
+                            <input type = "text" id="address_2" name="address_2" placeholder="Address 2" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.address_2%>"<%}%> %>>
+                            <% if(errors){%>
+                            <% var display = errors.find(element => element.param === 'address_2')%>
+                            <% if (display){%>
+                            <p class="errors"><%= display.msg%></p>
+                            <%}%>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <div class="four fields">
+                    <div class="field">
+                        <label for="city">City</label>
+                        <input type = "text" id="city" name="city" placeholder="City" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.city%>"<%}%> %>>
+                        <% if(errors){%>
+                        <% var display = errors.find(element => element.param === 'city')%>
+                        <% if (display){%>
+                        <p class="errors"><%= display.msg%></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                    <div class="field">
+                        <label for="state">State</label>
+                        <input type = "text" id="state" name="state" placeholder="State" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.state%>"<%}%> %>>
+												<% if(errors){%>
+                        <% var display = errors.find(element => element.param === 'state')%>
+                        <% if (display){%>
+                        <p class="errors"><%= display.msg%></p>
+                        <%}%>
+                        <%}%>
+                    </div>
+                    <div class="field">
+                        <label for="zipcode">Zipcode</label>
+                        <input type = "text" id="zipcode" name="zipcode" placeholder="Zipcode" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.zipcode%>"<%}%> %>>
+											<% if(errors){%>
+												<% var display = errors.find(element => element.param === 'zipcode')%>
+												<% if (display){%>
+													<p class="errors"><%= display.msg%></p>
+												<%}%>
+											<%}%>
+										</div>
+                    <div class="field">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="Country" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.country%>"<%}%> %>>
+										<% if(errors){%>
+											<% var display = errors.find(element => element.param === 'country')%>
+											<% if (display){%>
+												<p class="errors"><%= display.msg%></p>
+											<%}%>
+										<%}%>
+									</div>
+                </div>
+
+					<button class="ui button primary" type="submit">Submit</button>
+  </form>
+			</div>
+		</div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+	</div>
+
+</body>
+</html>

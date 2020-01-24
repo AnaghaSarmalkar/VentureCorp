@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Activity</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+
+        <% let path="/saved_activities" %>
+        <% include top_header.ejs%>
+
+		<main>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+				<% include partials/placeholder.ejs%>
+				<table>
+					<tr>
+						<td id="user_action1"><h3>Your Activities</h3></td>
+						<td id="user_action2">
+							<form action="/saved_activities/clear_profile" method="post">
+								<input class="ui button red" type="submit" name= "user_action" value="Clear Profile"  />
+							</form>
+						</td>
+					</tr>
+				</table>
+				<table>
+						<tr>
+						  <th>Event</th>
+						  <th>Category</th>
+						  <th>Attending</th>
+						  <th colspan="2">User Actions</th>
+						</tr>
+						<% if (typeof activities !== 'undefined'){%>
+							<% for (var i = 0; i < activities.length;  i++ ) { %>
+						<tr>
+						  <td><%= activities[i].activity.activity_name%></td>
+						  <td><%= activities[i].activity.activity_topic%></td>
+						  <td><%= activities[i].rsvp%></td>
+							<!-- <td> -->
+								<td>
+									<form action="/saved_activities/activity_action" method="post">
+										<input type="hidden" name="activity_id" value="<%=activities[i].activity.activity_id%>">
+				    				<input class="ui button primary" type="submit" name= "activity_action" value="Update"  />
+									</form>
+								</td>
+								<td>
+									<form action="/saved_activities/activity_action" method="post">
+										<input type="hidden" name="activity_id" value="<%=activities[i].activity.activity_id%>">
+				    				<input class="ui button primary" type="submit" name= "activity_action" value="Delete"  />
+									</form>
+								</td>
+							<!-- </td> -->
+
+								<!-- <a class="ui button primary" href="/activity_detail">Update</a>
+								<a class="ui button red" href="/saved_activites">Delete</a>
+						   -->
+						</tr>
+						<%}}%>
+				</table>
+				</div>
+			</div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+	</div>
+
+</body>
+</html>

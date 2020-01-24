@@ -1,0 +1,16 @@
+<%
+groupby = function(arr, key) {
+
+  let test = arr.reduce(function(acc, x) {
+    (acc[x[key]] = acc[x[key]] || []).push(x)
+    return acc;
+  }, {});
+  return test
+}
+
+userActivityResponse = function (obj) {
+  var base = "/saved_activites?activityID=";
+  var activity = obj.activity_id.toString();
+  return base+activity
+}
+%>

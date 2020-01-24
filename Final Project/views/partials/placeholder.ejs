@@ -1,0 +1,10 @@
+<% if (user){%>
+<div>
+  <h2>
+    <% var username=user.first_name +" "+user.last_name%>
+    <strong>Welcome <%=username%></strong>
+    <%var userid = user.user_id %>
+  </h2>
+  <br>
+</div>
+<%}%>

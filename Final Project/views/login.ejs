@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Outdoor Activities in Charlotte</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+        <% let path="/login" %>
+        <% include top_header.ejs%>
+
+		<main class="ui container half-width">
+			<% if (user){%>
+			<div class="placeholder-custom">
+				<h2>
+					<% var username=user.first_name +" "+user.last_name%>
+					<strong>Welcome <%=username%></strong>
+				</h2>
+			</div>
+			<%}%>
+            <div id="login-card" class="ui card">
+                <div class="content">
+									<div class="content">
+                    <h1 class="ui image header">
+
+                            Log in to Venture
+
+                    </h1>
+										</div>
+                    <div>
+                        <%if(ex_errors){%>
+                        <p class="errors"><%= ex_errors%></p>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="content">
+                    <form class="ui large form" id="new_activity" method="POST" action="/signIn">
+                        <div class="ui ">
+                            <div class="field">
+                                <input type="text" id="user_id" name="user_id" placeholder="Username" required pattern="\S.*\S?" <% if(req_body){%>value="<%= req_body.user_id%>"<%}%> %>>
+                                <% if(errors){%>
+                                <% var display = errors.find(element => element.param === 'user_id')%>
+                                <% if (display){%>
+                                <div class="ui mini negative message"><%= display.msg%></div>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <div class="field">
+                                <input type="password" id="password" name="password" placeholder="Password" required  pattern="\S.*\S?">
+                                <% if(errors){%>
+                                <% var display = errors.find(element => element.param === 'password')%>
+                                <% if (display){%>
+                                <div class="ui mini negative message"><%= display.msg%></div>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <button class="ui button fluid centered positive large" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="ui message center aligned">
+                    New to us? <a href="/register">Register</a>
+                </div>
+            </div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+	</div>
+
+</body>
+</html>

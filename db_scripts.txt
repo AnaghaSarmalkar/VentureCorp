@@ -1,0 +1,127 @@
+use VentureCorpDB
+
+db.createCollection("UserCreds")
+db.UserCreds.insertMany([{
+...   "first_name" : "Anagha",
+...   "last_name" : "Sarmalkar",
+...   "user_id" : "dummy@gmail.com",
+...   "password" : { 
+...   	"salt" : "995f51ceee49ce0bbf35",
+...   	"passwordHash" : "df0fc715ea39bae4c1bfe1d436d34ba1235072ef3624575538777898aa159ead56345b0885a2494d52415ef94bfe925a14a55072c833929160204ec3c9d99c27" 
+...   },
+...   "address_1" : "UT Drive",
+...   "address_2" : "Charlotte",
+...   "city" : "Charlotte",
+...   "state" : "NC",
+...   "zipcode" : "28262",
+...   "country" : "USA"
+... },
+... {
+...   "first_name" : "Kiran",
+...   "last_name" : "Gadhave",
+...   "user_id" : "dummy2@gmail.com",
+...   "password" : { 
+...   	"salt" : "7c21b14e3170b6708b35", 
+...   	"passwordHash" : "b9e2a2836b06e0f3299d2a51baaa87fd19c96cc162f74eba53f2b2f0bb15da1839509614f943ed38fbabebb0aaada0ee31f4eab85f0bfa13557009ced1055a6f" 
+...   	},
+...   "address_1" : "UT Drive",
+...   "address_2" : "Charlotte",
+...   "city" : "Charlotte",
+...   "state" : "NC",
+...   "zipcode" : "28262",
+...   "country" : "USA"
+... }])
+
+db.createCollection("UserProfile")
+db.UserProfile.insertMany([{
+...   "user_id" : "dummy@gmail.com", 
+...   "first_name" : "Anagha", 
+...   "last_name" : "Sarmalkar", 
+...   "activity_rsvp" : [ ]
+...   },
+...   {
+...   "user_id" : "dummy2@gmail.com", 
+...   "first_name" : "Kiran", 
+...   "last_name" : "Gadhave", 
+...   "activity_rsvp" : [ ]
+...   }])
+
+
+db.createCollection("Activities")
+db.Activities.insertMany([{activity_id: "ACT01",
+   activity_name: "Trek to Smokey Mountain",
+   activity_topic: "Trekking",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time: "10:30:00",
+   activity_loc: "Bryson City",
+   activity_details:"With close proximity to the Great Smoky Mountains National Park, Bryson City is a solid pick for the adventurous type. Hike, tube, fly fish or horseback ride the day away here, or hop on the Great Smoky Mountains Railroad for a daylong ride to and from the Nantahala Outdoor Center. No matter the mode of transportation, any trip to Bryson City would be incomplete without a visit to the NOC, a whitewater kayaking and rafting outfitter in the thick of the Nantahala National Forest."
+ },
+ { activity_id: "ACT02",
+   activity_name:"Trek to Crowder's Mountain",
+   activity_topic: "Trekking",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time:"19:30",
+   activity_loc:"Gastonia",
+   activity_details:"Crowders Mountain is one of two main peaks within Crowders Mountain State Park, the other peak being The Pinnacle. The park is located in the western Piedmont of North Carolina between the cities of Kings Mountain and Gastonia or about 25 miles west of Charlotte."
+ },
+ {
+   activity_id: "ACT03",
+   activity_name:"Trek to Alps Mountain",
+   activity_topic: "Trekking",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time:"11:30",
+   activity_loc:"Kings Mountain",
+   activity_details:"Kings Pinnacle, or more commonly The Pinnacle, is one of the two main peaks located within Crowders Mountain State Park. The other peak is Crowders Mountain. The park is located in the western Piedmont of North Carolina between the cities of Kings Mountain and Gastonia."
+ },
+ {
+   activity_id: "ACT04",
+   activity_name:"Camping World Racing Resort",
+   activity_topic: "Camping",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"09-10-2020",
+   activity_time:"11:30:00",
+   activity_loc:"Concord",
+   activity_details:"Tent & motor-home campground at Charlotte Motor Speedway with a playground, sand volleyball & more."
+ },
+ {
+   activity_id: "ACT05",
+   activity_name:"Camping at  Elmore RV Park",
+   activity_topic: "Camping",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time:"11:30",
+   activity_loc:"Charlotte",
+   activity_details:"Campground in Charlotte, North Carolina."
+ },
+ {
+   activity_id: "ACT06",
+   activity_name:"Camping at Glenwood Acres RV Park",
+   activity_topic: "Camping",
+   activity_host:"Admin 1",
+   activity_host_id:"admin@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time:"11:30",
+   activity_loc:"Concord",
+   activity_details:"No-frills campground for RVs & campers, offering an on-site gas station & picnic tables."
+ },
+ {
+   activity_id: "1234",
+   activity_name:"Test",
+   activity_topic: "Test",
+   activity_host:"Anagha Sarmalkar",
+   activity_host_id:"dummy@gmail.com",
+   activity_date:"2020-05-10",
+   activity_time:"11:30",
+   activity_loc:"Test",
+   activity_details:"Test"
+ }
+])
+ 

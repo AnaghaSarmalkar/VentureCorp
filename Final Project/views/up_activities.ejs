@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Upcoming Activies</title>
+	<% include partials/style.ejs%>
+</head>
+<body>
+	<div class="container">
+
+        <% let path="/up_activities" %>
+        <% include top_header.ejs%>
+
+		<main>
+			<div class="ui two column grid">
+			<div id="div_head" class="ui column container2">
+				<% include partials/placeholder.ejs%>
+			<!-- Include the helper function to group the activities by their topics. -->
+			<% include helperFunctions/groupby.ejs %>
+			<% var test=groupby(activity, "activity_topic") %>
+			<div class="ui container">
+				<div class="ui list">
+					<!-- Run through the topics list. -->
+					<% Object.keys(test).forEach(function(key){ %>
+						<div class="item"> <div class="ui header"><%= key %></div>
+						<% let activitiesInKey = test[key]; %>
+						<!-- Run through the list of objects in a topic -->
+					<% activitiesInKey.forEach (function (obj) { %>
+									<div class="ui list">
+										<div class="item"><a href="/activity_detail?activity_id=<%= obj.activity_id %>"><%= obj.activity_name%></a></div>
+								</div>
+							<% }); %>
+					</div>
+					<% }); %>
+
+				</div>
+			</div>
+			</div>
+			</div>
+		</main>
+			<footer>
+				<% include partials/footer.ejs%>
+			</footer>
+		</div>
+</body>
+</html>
